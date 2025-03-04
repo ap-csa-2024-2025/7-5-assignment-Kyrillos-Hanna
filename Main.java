@@ -20,7 +20,7 @@ public class Main
 
 
   /** Precondition: No element of arr is null.
-   * Precondition: arr is non-empty
+   * Precondition: arr is non-empty /
    */
   public static void sortAndPrintDescending(String[] arr)
   {
