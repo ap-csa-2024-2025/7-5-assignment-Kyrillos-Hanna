@@ -13,6 +13,7 @@ public class Main
     numList.add(7);
 
     sortAndPrintDescending(wordArr);
+    System.out.println();
     selectSortDescending(numList);
 
   }
@@ -23,20 +24,22 @@ public class Main
    */
   public static void sortAndPrintDescending(String[] arr)
   {
-    for (int i = 0; i < arr.length; i++) {
-      String first = arr[i];
-      String current = arr[i];
-      int k = 0;
-      for (k = i; k < arr.length; k++) {
-        if (arr[k].compareTo(first) > 0) {
-          first = arr[k];
+    for (int i = 0; i < arr.length -1; i++) {
+      int minIndex = i;
+
+      for (int k = i + 1; k < arr.length; k++) {
+        if (arr[k].compareTo(arr[minIndex]) > 0) {
+          minIndex = k;
         }
       }
-      if (current.compareTo(first) > 0) {
-        arr[i] = first;
-        arr[k] = current;
+
+      if (i != minIndex) {
+        String temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
       }
     }
+
     for (String i : arr) {
       System.out.print(i + " ");
     }
@@ -47,19 +50,18 @@ public class Main
    */
   public static void selectSortDescending(ArrayList<Integer> list)
   {
-    for (int i = 0; i < list.size(); i++) {
-      int max = list.get(i);
-      int current = list.get(i);
-      int k = 0;
-      for (k = i+1; k < list.size(); k++) {
-        if (list.get(k) > max) {
-          max = list.get(k);
+    for (int i = 0; i < list.size() - 1; i++) {
+      int maxIndex = i;
+      for (int k = i+1; k < list.size(); k++) {
+        if (list.get(k) > list.get(maxIndex)) {
+          maxIndex = k;
         }
       }
 
-      if (k != i) {
-        list.set(i, max);
-        list.set(k, current);
+      if (i != maxIndex) {
+        int temp = list.get(i);
+        list.set(i, list.get(maxIndex));
+        list.set(maxIndex, temp);
       }
     }
     System.out.print(list);
